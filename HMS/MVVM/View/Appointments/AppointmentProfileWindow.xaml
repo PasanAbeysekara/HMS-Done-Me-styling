@@ -1,0 +1,42 @@
+﻿<Window x:Class="HMS.MVVM.View.Appointments.AppointmentProfileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HMS.MVVM.View.Appointments"
+        xmlns:vm="clr-namespace:HMS.MVVM.ViewModel.Profiles"
+        mc:Ignorable="d"
+        Title="AppointmentProfile" Height="200" Width="400">
+    <Window.DataContext>
+        <vm:AppointmentProfile/>
+    </Window.DataContext>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Appointment Id : "/>
+                <TextBlock Text="{Binding AppointmentId}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Appointment Date : "/>
+                <TextBlock Text="{Binding AppointmentDate}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Doctor ID : "/>
+                <TextBlock Text="{Binding DoctorId}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Doctor Name : "/>
+                <TextBlock Text="{Binding DoctorName}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Patient ID : "/>
+                <TextBlock Text="{Binding PatientId}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Patient Name : "/>
+                <TextBlock Text="{Binding PatientName}"/>
+            </StackPanel>
+            <Button Content="Close" Click="CloseButton_Clicked" Style="{StaticResource pagingButton}" Width="100"/>
+        </StackPanel>
+    </Grid>
+</Window>

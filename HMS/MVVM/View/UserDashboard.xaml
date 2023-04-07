@@ -1,0 +1,155 @@
+﻿<UserControl x:Class="HMS.MVVM.View.UserDashboard"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:HMS.MVVM.View.UserControls"
+        xmlns:fa2="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:vm="clr-namespace:HMS.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Height="380" 
+        Width="800"
+        Background="Transparent"
+        >
+
+    <UserControl.DataContext>
+        <vm:UserDashboardVM/>
+    </UserControl.DataContext>
+    
+    <Grid>
+        <Border 
+                CornerRadius="10"
+                Background="Transparent">
+
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <!--Info Card-->
+                <Grid Grid.Column="1" Margin="0 10 15 10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <uc:InfoCard Grid.Row="0" 
+                                 Title="Total Patients"
+                                 Number="{Binding PatientCount}"
+                                 Icon="Users"
+                                 Background1="#827bff" Background2="#d9b5ff"
+                                 EllipseBackground1="#b298fb" EllipseBackground2="#e4bbff"/>
+
+                    <uc:InfoCard Grid.Row="1" 
+                                 Title="Total Prescriptions"
+                                 Number="{Binding PrescriptionCount}"
+                                 Icon="Prescription"
+                                 Background1="#52a447" Background2="#b2d79d"
+                                 EllipseBackground1="#b298fb" EllipseBackground2="#c5e1b6"/>
+
+                    <uc:InfoCard Grid.Row="2" 
+                                 Title="Total Tests"
+                                 Number="{Binding TestCount}"
+                                 Icon="FileMedical"
+                                 Background1="#fd8a87" Background2="#f3ab92"
+                                 EllipseBackground1="#fbd5a8" EllipseBackground2="#fdb89b"/>
+
+                    <uc:InfoCard Grid.Row="3" 
+                                 Title="Total Doctors"
+                                 Number="{Binding DoctorCount}"
+                                 Icon="Stethoscope"
+                                 Background1="#fc84cb" Background2="#fc8fae"
+                                 EllipseBackground1="#fc8fae" EllipseBackground2="#ffabe6"/>
+
+                </Grid>
+
+
+
+
+                <!--Order Section-->
+                <Border Grid.Column="0" CornerRadius="20" Padding="0 25"
+                            Background="#243771" Margin="20 10 20 10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="125*"/>
+                            <ColumnDefinition Width="113*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal" Margin="20 0 0 5" Grid.ColumnSpan="2">
+                            <fa2:IconImage Icon="Circle" Style="{StaticResource titleIcon}"/>
+                            <TextBlock Text="Available Drugs" Style="{StaticResource titleText}"/>
+                        </StackPanel>
+
+                        <!--Orders-->
+
+                        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Height = "280" VerticalScrollBarVisibility = "Auto">
+                            <StackPanel >
+                                <ListView ItemsSource="{Binding DrugsData}" Background="#243771">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <uc:Order Title="{Binding TradeName}" 
+                                          Desc="{Binding GenericName}"
+                                          Icon="SuitcaseMedical"/>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+
+                <!--Order Section-->
+                <Border Grid.Column="2" CornerRadius="20" Padding="0 25"
+                            Background="#243771" Margin="20 10 20 10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="125*"/>
+                            <ColumnDefinition Width="113*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal" Margin="20 0 0 5" Grid.ColumnSpan="2">
+                            <fa2:IconImage Icon="Circle" Style="{StaticResource titleIcon}"/>
+                            <TextBlock Text="Available Tests" Style="{StaticResource titleText}"/>
+                        </StackPanel>
+
+                        <!--Orders-->
+                        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Height = "280" VerticalScrollBarVisibility = "Auto">
+                            <StackPanel>
+                                <ListView ItemsSource="{Binding TestsData}" Background="#243771">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <uc:Order Title="{Binding TestName}" 
+                                          Desc="{Binding Description}"
+                                          Icon="SuitcaseMedical"/>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+
+                            </StackPanel>
+                        </ScrollViewer>
+
+                    </Grid>
+                </Border>
+
+
+
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

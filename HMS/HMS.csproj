@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\appointment.jpg" />
+    <None Remove="Images\appointment2.png" />
+    <None Remove="Images\drug.png" />
+    <None Remove="Images\hosp.png" />
+    <None Remove="Images\hosp2.png" />
+    <None Remove="Images\hospital.png" />
+    <None Remove="Images\hospitalLogo.png" />
+    <None Remove="Images\patient.png" />
+    <None Remove="Images\patientInfo.png" />
+    <None Remove="Images\prescription.png" />
+    <None Remove="Images\prescription2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+    <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Prism.Core" Version="8.1.97" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\appointment.jpg" />
+    <Resource Include="Images\appointment2.png" />
+    <Resource Include="Images\drug.png" />
+    <Resource Include="Images\hosp.png" />
+    <Resource Include="Images\hosp2.png" />
+    <Resource Include="Images\hospital.png" />
+    <Resource Include="Images\hospitalLogo.png" />
+    <Resource Include="Images\patient.png" />
+    <Resource Include="Images\patientInfo.png" />
+    <Resource Include="Images\prescription.png" />
+    <Resource Include="Images\prescription2.png" />
+  </ItemGroup>
+
+</Project>
