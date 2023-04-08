@@ -15,7 +15,7 @@
     <UserControl.DataContext>
         <vm:UserDashboardVM/>
     </UserControl.DataContext>
-    
+
     <Grid>
         <Border 
                 CornerRadius="10"
@@ -39,34 +39,155 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <uc:InfoCard Grid.Row="0" 
-                                 Title="Total Patients"
-                                 Number="{Binding PatientCount}"
-                                 Icon="Users"
-                                 Background1="#827bff" Background2="#d9b5ff"
-                                 EllipseBackground1="#b298fb" EllipseBackground2="#e4bbff"/>
+                    <Border Width="200" Grid.Row="0" Grid.Column="1"
+                    Height="85"
+                     HorizontalAlignment="Center" CornerRadius="10">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0 0" 
+                                         EndPoint="1 2">
+                                <GradientStop Color="#5bc3ff" Offset="0.0"/>
+                                <GradientStop Color="DarkBlue" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Clip>
+                            <RectangleGeometry 
+                                       Rect="0 0 600 200"/>
+                        </Border.Clip>
 
-                    <uc:InfoCard Grid.Row="1" 
-                                 Title="Total Prescriptions"
-                                 Number="{Binding PrescriptionCount}"
-                                 Icon="Prescription"
-                                 Background1="#52a447" Background2="#b2d79d"
-                                 EllipseBackground1="#b298fb" EllipseBackground2="#c5e1b6"/>
+                        <Grid>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Total Patients"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   Margin="10 10 10 0"
+                                   HorizontalAlignment="left"/>
 
-                    <uc:InfoCard Grid.Row="2" 
-                                 Title="Total Tests"
-                                 Number="{Binding TestCount}"
-                                 Icon="FileMedical"
-                                 Background1="#fd8a87" Background2="#f3ab92"
-                                 EllipseBackground1="#fbd5a8" EllipseBackground2="#fdb89b"/>
+                                    <fa2:IconImage Icon="Users" Margin="40 5 0 0" Foreground="white" Width="40" Height="40"/>
+                                </StackPanel>
 
-                    <uc:InfoCard Grid.Row="3" 
-                                 Title="Total Doctors"
-                                 Number="{Binding DoctorCount}"
-                                 Icon="Stethoscope"
-                                 Background1="#fc84cb" Background2="#fc8fae"
-                                 EllipseBackground1="#fc8fae" EllipseBackground2="#ffabe6"/>
+                                <TextBlock Text="{Binding PatientCount}"
+                                   Foreground="White"
+                                   FontSize="30"
+                                   Margin="20 0 0 0"
+                                   HorizontalAlignment="left"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
 
+
+                  
+                        <Border Width="200" Grid.Row="1" Grid.Column="1"
+                    Height="85"
+                     HorizontalAlignment="Center" CornerRadius="10">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0 0" 
+                                         EndPoint="1 2">
+                                    <GradientStop Color="#a4de02" Offset="0.0"/>
+                                    <GradientStop Color="#1e5631" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.Clip>
+                                <RectangleGeometry 
+                                       Rect="0 0 600 200"/>
+                            </Border.Clip>
+
+                            <Grid>
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Total Prescriptions"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   Margin="10 10 10 0"
+                                   HorizontalAlignment="left"/>
+
+                                        <fa2:IconImage Icon="Prescription" Margin="15 5 0 0" Foreground="white" Width="40" Height="40"/>
+                                    </StackPanel>
+
+                                    <TextBlock Text="{Binding PrescriptionCount}"
+                                   Foreground="White"
+                                   FontSize="30"
+                                   Margin="20 0 0 0"
+                                   HorizontalAlignment="left"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+
+                    <Border Width="200" Grid.Row="2" Grid.Column="1"
+                    Height="85"
+                     HorizontalAlignment="Center" CornerRadius="10">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0 0" 
+                                         EndPoint="1 2">
+                                <GradientStop Color="#c364fa" Offset="0.0"/>
+                                <GradientStop Color="#3b0054" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Clip>
+                            <RectangleGeometry 
+                                       Rect="0 0 600 200"/>
+                        </Border.Clip>
+
+                        <Grid>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Total Tests"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   Margin="10 10 10 0"
+                                   HorizontalAlignment="left"/>
+
+                                    <fa2:IconImage Icon="FileMedical" Margin="65 5 0 0" Foreground="white" Width="40" Height="40"/>
+                                </StackPanel>
+
+                                <TextBlock Text="{Binding TestCount}"
+                                   Foreground="White"
+                                   FontSize="30"
+                                   Margin="20 0 0 0"
+                                   HorizontalAlignment="left"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+
+                    <Border Width="200" Grid.Row="3" Grid.Column="1"
+                    Height="85"
+                     HorizontalAlignment="Center" CornerRadius="10">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0 0" 
+                                         EndPoint="1 2">
+                                <GradientStop Color="#f7ae65" Offset="0.0"/>
+                                <GradientStop Color="#ff6600" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background> 
+                        <Border.Clip>
+                            <RectangleGeometry 
+                                       Rect="0 0 600 200"/>
+                        </Border.Clip>
+
+                        <Grid>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Total Doctors"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   Margin="10 10 10 0"
+                                   HorizontalAlignment="left"/>
+
+                                    <fa2:IconImage Icon="Stethoscope" Margin="40 5 0 0" Foreground="white" Width="40" Height="40"/>
+                                </StackPanel>
+
+                                <TextBlock Text="{Binding DoctorCount}"
+                                   Foreground="White"
+                                   FontSize="30"
+                                   Margin="20 0 0 0"
+                                   HorizontalAlignment="left"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+             
                 </Grid>
 
 

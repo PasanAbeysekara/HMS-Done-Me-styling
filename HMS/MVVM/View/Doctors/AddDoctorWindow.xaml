@@ -133,8 +133,7 @@
             CornerRadius="25 0 0 25">
             <StackPanel VerticalAlignment="Center">
                 <Image Source="/Images/doctor.png" Width="160" Height="160" Margin="0 0 0 40"/>
-                <TextBlock Text="Lets get you set up" TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="#363636"/>
-                <TextBlock TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Foreground="#363636" Text="It should only take a couple of minutes"/>
+                <TextBlock Text="Add Doctor Details" TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="#363636"/>
                 <Button Style="{StaticResource buttonBlack}">
                     <fa:ImageAwesome Icon="AngleRight" Width="25" Height="25" Foreground="#ffd500" Margin="3 0 0 0"/>
 
@@ -164,10 +163,10 @@
 
                     <TextBlock Grid.Row="0" Text="Doctor Name (Dr.)" Style="{StaticResource text}" Margin="0 10 0 10"/>
                     <TextBlock Grid.Row="1" Text="Doctor Fee (LKR)" Style="{StaticResource text}" Margin="0 10 0 10"/>
-                    
+
                     <TextBox Grid.Column="1" Grid.Row="0" Style="{StaticResource TextBoxStyle}" Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}" Margin="0 10 0 10"/>
                     <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource TextBoxStyle}" Text="{Binding Fee,UpdateSourceTrigger=PropertyChanged}" Margin="0 10 0 10"/>
-                    
+
 
                     <Grid Grid.Column="1" Grid.Row="3" Margin="0 40 0 0">
                         <Grid.ColumnDefinitions>

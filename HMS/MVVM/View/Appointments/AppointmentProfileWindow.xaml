@@ -6,37 +6,66 @@
         xmlns:local="clr-namespace:HMS.MVVM.View.Appointments"
         xmlns:vm="clr-namespace:HMS.MVVM.ViewModel.Profiles"
         mc:Ignorable="d"
-        Title="AppointmentProfile" Height="200" Width="400">
+        Title="AppointmentProfile" Height="220" Width="400"
+        Background="Transparent"
+        WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+
     <Window.DataContext>
         <vm:AppointmentProfile/>
     </Window.DataContext>
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Appointment Id : "/>
-                <TextBlock Text="{Binding AppointmentId}"/>
+
+        <Border CornerRadius="10" >
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#26abff" Offset="0.0"/>
+                    <GradientStop Color="#5579c6" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Appointment Profile" HorizontalAlignment="Center" FontFamily="Stencil" Margin="0,0,0,20" FontSize="18"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+
+
+                    <TextBlock Text="Appointment Id : " Grid.Column="0" Grid.Row="0"/>
+                    <TextBlock Text="{Binding AppointmentId}" Grid.Column="1" Grid.Row="0"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Appointment Date : "/>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding AppointmentDate}"/>
+
+
+                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Doctor ID : "/>
+                    <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding DoctorId}"/>
+
+
+                    <TextBlock Grid.Column="0" Grid.Row="3" Text="Doctor Name : "/>
+                    <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding DoctorName}"/>
+
+
+                    <TextBlock Grid.Column="0" Grid.Row="4" Text="Patient ID : "/>
+                    <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding PatientId}"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="5" Text="Patient Name : "/>
+                    <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding PatientName}"/>
+
+                </Grid>
+                <Button Content="Close" Click="CloseButton_Clicked" Style="{StaticResource pagingButton}" Width="100" Margin="10"/>
+
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Appointment Date : "/>
-                <TextBlock Text="{Binding AppointmentDate}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Doctor ID : "/>
-                <TextBlock Text="{Binding DoctorId}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Doctor Name : "/>
-                <TextBlock Text="{Binding DoctorName}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Patient ID : "/>
-                <TextBlock Text="{Binding PatientId}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Patient Name : "/>
-                <TextBlock Text="{Binding PatientName}"/>
-            </StackPanel>
-            <Button Content="Close" Click="CloseButton_Clicked" Style="{StaticResource pagingButton}" Width="100"/>
-        </StackPanel>
+        </Border>
     </Grid>
 </Window>

@@ -22,10 +22,10 @@
         </Grid.ColumnDefinitions>
 
         <!--Left Info-box-->
-        <Border Background="#187bcd" CornerRadius="0 100 0 0">
+        <Border Background="#3792cb" CornerRadius="0 100 0 0">
             <StackPanel>
                 <Image Source="/Images/patientInfo.png" Width="125" Margin="10 50 10 30"/>
-                <TextBlock Text="{Binding Naame}" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding Name}" HorizontalAlignment="Center"/>
 
                 <StackPanel Margin="0 10 0 0" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal" Margin="0 5 0 0">

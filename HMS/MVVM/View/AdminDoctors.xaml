@@ -7,16 +7,24 @@
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:vm="clr-namespace:HMS.MVVM.ViewModel"
              mc:Ignorable="d" 
+                  xmlns:fa="http://schemas.fontawesome.io/icons/"
              d:DesignHeight="450" d:DesignWidth="800"
              x:Name="adminDoctors_window">
     <UserControl.DataContext>
         <vm:AdminDoctorsVM/>
     </UserControl.DataContext>
 
-   
+
     <StackPanel>
         <StackPanel Orientation="Horizontal">
-            <Button Content="Refresh" Width="100" Style="{StaticResource pagingButton}" Command="{Binding RefreshListCommand}"/>
+            <Button  Width="100" Style="{StaticResource pagingButton}" Command="{Binding RefreshListCommand}">
+                <Button.Content>
+                    <StackPanel>
+                        <TextBlock Text="Refresh"/>
+                        <fa:ImageAwesome Icon="Refresh" Width="15" Foreground="White"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
             <Button Style="{StaticResource pagingButton}" Margin="540 0" Click="AddMemberButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <icon:PackIconMaterial Kind="Plus" Style="{StaticResource menuButtonIcon}" Margin="10 5"/>

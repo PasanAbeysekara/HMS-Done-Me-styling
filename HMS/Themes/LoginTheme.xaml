@@ -4,7 +4,7 @@
     <Style TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value ="White"/>
         <Setter Property="FontFamily" Value ="Helvetica"/>
-        <Setter Property="FontWeight" Value ="Light"/>
+        <Setter Property="FontWeight" Value ="SemiBold"/>
 
         <Setter Property="Background" Value ="Transparent"/>
         <Setter Property="Template">
@@ -21,9 +21,9 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="White"/>
-                <Setter Property="Opacity" Value="0.4"/>
-                <Setter Property="Foreground" Value="DeepSkyBlue"/>
+                <Setter Property="Background" Value="#45b6fe"/>
+                
+                <Setter Property="Foreground" Value="Black"/>
 
             </Trigger>
         </Style.Triggers>
@@ -50,12 +50,14 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="LightBlue"/>
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" Value="#45b6fe"/>
+
             </Trigger>
         </Style.Triggers>
 
     </Style>
+
+
 
 
 </ResourceDictionary>

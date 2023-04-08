@@ -93,12 +93,13 @@ namespace HMS.MVVM.ViewModel
 
 
 		void ExecuteCreateCommand()
-		{
-			using (DataContext context = new DataContext())
+        {
+            double tmp;
+            using (DataContext context = new DataContext())
 			{
-				if (String.IsNullOrWhiteSpace(_fullName) || String.IsNullOrWhiteSpace(_email) || String.IsNullOrWhiteSpace(_gender) || String.IsNullOrWhiteSpace(_phone) || String.IsNullOrWhiteSpace(_blood) || String.IsNullOrWhiteSpace(_address) || String.IsNullOrWhiteSpace(_weight) || String.IsNullOrWhiteSpace(_height))
+				if (String.IsNullOrWhiteSpace(_fullName) || String.IsNullOrWhiteSpace(_email) || String.IsNullOrWhiteSpace(_gender) || String.IsNullOrWhiteSpace(_phone) || String.IsNullOrWhiteSpace(_blood) || String.IsNullOrWhiteSpace(_address) || String.IsNullOrWhiteSpace(_weight) || String.IsNullOrWhiteSpace(_height)||!Regex.Match(_phone, @"^\d{10}$").Success || !Double.TryParse(_weight, out tmp) || !Double.TryParse(_height, out tmp))
 				{
-					double tmp;
+				
 					if (String.IsNullOrWhiteSpace(_fullName) && String.IsNullOrWhiteSpace(_email) && String.IsNullOrWhiteSpace(_gender) && String.IsNullOrWhiteSpace(_phone) && String.IsNullOrWhiteSpace(_blood) && String.IsNullOrWhiteSpace(_address) && String.IsNullOrWhiteSpace(_weight) && String.IsNullOrWhiteSpace(_height))
 					{
 						var messageWindow = new MessageWindow("Please Enter Valid Patients Details.\n Make Sure to fill all the fields 😊");
@@ -146,6 +147,11 @@ namespace HMS.MVVM.ViewModel
 						var messageWindow = new MessageWindow("Please Enter Valid Height 😊");
 						messageWindow.ShowDialog();
 					}
+					else
+					{
+                        var messageWindow = new MessageWindow("Please Enter Valid Patients Details in all the fields 😊");
+                        messageWindow.ShowDialog();
+                    }
 				}
 				else
 				{

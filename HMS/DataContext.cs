@@ -27,7 +27,7 @@ namespace HMS
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlite("Data Source=hospital.db");
+			optionsBuilder.UseSqlite("Data Source=/testHospital.db");
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)

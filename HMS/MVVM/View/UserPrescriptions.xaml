@@ -12,32 +12,33 @@
     <UserControl.DataContext>
         <vm:UserPrescriptionsVM/>
     </UserControl.DataContext>
-
-    <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" IsReadOnly="True"
+    <StackPanel>
+        <TextBlock Text="* Note : Prescriptions can be Added in the Patients tab" Foreground="Blue"/>
+        <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" IsReadOnly="True"
                               RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" ItemsSource="{Binding PrescriptionsData}" AutoGenerateColumns="False" MaxHeight="380">
-        <DataGrid.Columns>
+            <DataGrid.Columns>
 
-            <DataGridTextColumn Binding="{Binding Id}" Header="# ID"/>
-            <DataGridTextColumn Binding="{Binding PatientId}" Header="Patient ID"/>
-            <DataGridTextColumn Binding="{Binding PrescribedDate}" Header="Date"/>
+                <DataGridTextColumn Binding="{Binding Id}" Header="# ID"/>
+                <DataGridTextColumn Binding="{Binding PatientId}" Header="Patient ID"/>
+                <DataGridTextColumn Binding="{Binding PrescribedDate}" Header="Date"/>
 
-            <DataGridTemplateColumn Width="140">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Button Command="{Binding DataContext.ProfilePrescriptionCommand,ElementName=userPrescriptions_window}" CommandParameter="{Binding}" Style="{StaticResource actionButton}">
-                                <icon:PackIconMaterial Kind="Account" Style="{StaticResource actionButtonIcon}"/>
-                            </Button>
-                            <Button Command="{Binding DataContext.DeletePrescriptionCommand,ElementName=userPrescriptions_window}" CommandParameter="{Binding}" Style="{StaticResource actionButton}">
-                                <icon:PackIconMaterial Kind="Delete" Style="{StaticResource actionButtonIcon}"/>
-                            </Button>
-                        </StackPanel>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
-        </DataGrid.Columns>
-    </DataGrid>
-    
-    
-    
+                <DataGridTemplateColumn Width="140" Header="Action" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Command="{Binding DataContext.ProfilePrescriptionCommand,ElementName=userPrescriptions_window}" CommandParameter="{Binding}" Style="{StaticResource actionButton}" Background="#A4de02">
+                                    <icon:PackIconMaterial Kind="Account" Style="{StaticResource actionButtonIcon}"/>
+                                </Button>
+                                <Button Command="{Binding DataContext.DeletePrescriptionCommand,ElementName=userPrescriptions_window}" CommandParameter="{Binding}" Style="{StaticResource actionButton}" Background="#df2c14">
+                                    <icon:PackIconMaterial Kind="Delete" Style="{StaticResource actionButtonIcon}"/>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </StackPanel>
 </UserControl>

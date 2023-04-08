@@ -132,9 +132,8 @@
             Padding="30"
             CornerRadius="25 0 0 25">
             <StackPanel VerticalAlignment="Center">
-                <Image Source="/Images/doctor.png" Width="160" Height="160" Margin="0 0 0 40"/>
-                <TextBlock Text="Lets get you set up" TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="#363636"/>
-                <TextBlock TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Foreground="#363636" Text="It should only take a couple of minutes"/>
+                <Image Source="/Images/userImage.png" Width="160" Height="160" Margin="0 0 0 40"/>
+                <TextBlock Text="Add User Details" TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="#363636"/>
                 <Button Style="{StaticResource buttonBlack}">
                     <fa:ImageAwesome Icon="AngleRight" Width="25" Height="25" Foreground="#ffd500" Margin="3 0 0 0"/>
 
@@ -147,7 +146,7 @@
 
         <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0" MouseDown="Border_MouseDown" >
             <Grid>
-                
+
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0">
 
                     <Grid.ColumnDefinitions>
@@ -183,7 +182,7 @@
                         <Button Content="Cancel" Margin="0 0 10 0" Style="{StaticResource buttonMain}" Command="{Binding CloseCommand}"/>
                         <Button Content="Save" Margin="10 0 0 0" Grid.Column="1" Style="{StaticResource buttonMainGreen}" Command="{Binding CreateCommand}"/>
                     </Grid>
-                    
+
                 </Grid>
             </Grid>
         </Border>

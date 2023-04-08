@@ -134,9 +134,8 @@
             CornerRadius="25 0 0 25">
             <StackPanel VerticalAlignment="Center">
                 <Image Source="/Images/prescription.png" Width="160" Height="160" Margin="0 0 0 40"/>
-                <TextBlock Text="Lets get you set up" TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="#363636"/>
-                <TextBlock TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Foreground="#363636" Text="It should only take a couple of minutes"/>
-                <Button Style="{StaticResource buttonBlack}" Command="{Binding ForTestCommand}">
+                <TextBlock TextWrapping="Wrap" Text="Enter Prescription Details" TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="#363636"/>
+                <Button Style="{StaticResource buttonBlack}">
                     <fa:ImageAwesome Icon="AngleRight" Width="25" Height="25" Foreground="#ffd500" Margin="3 0 0 0"/>
 
                 </Button>

@@ -12,30 +12,33 @@
     <UserControl.DataContext>
         <vm:UserAppointmentsVM/>
     </UserControl.DataContext>
+    <StackPanel>
+        <TextBlock Text="* Note : Appointments can be Added in the Patients tab" Foreground="Blue"/>
 
-    <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" IsReadOnly="True"
+        <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" IsReadOnly="True"
                               RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" ItemsSource="{Binding AppointmentsData}" AutoGenerateColumns="False" MaxHeight="380">
-        <DataGrid.Columns>
-            <DataGridTextColumn Binding="{Binding Id}" Header="# ID"/>
-            <DataGridTextColumn Binding="{Binding AppointedDate}" Header="Appointment Date"/>
-            <DataGridTextColumn Binding="{Binding DoctorId}" Header="Doctor ID"/>
-            <DataGridTextColumn Binding="{Binding PatientId}" Header="Patient ID"/>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="# ID"/>
+                <DataGridTextColumn Binding="{Binding AppointedDate}" Header="Appointment Date"/>
+                <DataGridTextColumn Binding="{Binding DoctorId}" Header="Doctor ID"/>
+                <DataGridTextColumn Binding="{Binding PatientId}" Header="Patient ID"/>
 
-            <DataGridTemplateColumn Width="140">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Button Command="{Binding DataContext.ProfileAppointmentCommand,ElementName=userAppointments_window}" CommandParameter="{Binding}" Style="{StaticResource actionButton}">
-                                <icon:PackIconMaterial Kind="Account" Style="{StaticResource actionButtonIcon}"/>
-                            </Button>
-                            <Button Command="{Binding DataContext.DeleteAppointmentCommand,ElementName=userAppointments_window}" CommandParameter="{Binding}" Style="{StaticResource actionButton}">
-                                <icon:PackIconMaterial Kind="Delete" Style="{StaticResource actionButtonIcon}"/>
-                            </Button>
-                        </StackPanel>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
-            
-        </DataGrid.Columns>
-    </DataGrid>
+                <DataGridTemplateColumn Width="140" Header="Action">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Command="{Binding DataContext.ProfileAppointmentCommand,ElementName=userAppointments_window}" CommandParameter="{Binding}" Style="{StaticResource actionButton}" Background="#A4de02">
+                                    <icon:PackIconMaterial Kind="Account" Style="{StaticResource actionButtonIcon}"/>
+                                </Button>
+                                <Button Command="{Binding DataContext.DeleteAppointmentCommand,ElementName=userAppointments_window}" CommandParameter="{Binding}" Style="{StaticResource actionButton}" Background="#df2c14">
+                                    <icon:PackIconMaterial Kind="Delete" Style="{StaticResource actionButtonIcon}"/>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
 </UserControl>

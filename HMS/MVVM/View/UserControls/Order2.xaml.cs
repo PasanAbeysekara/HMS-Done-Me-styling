@@ -18,9 +18,9 @@ namespace HMS.MVVM.View.UserControls
     /// <summary>
     /// Interaction logic for Order.xaml
     /// </summary>
-    public partial class Order : UserControl
+    public partial class Order2 : UserControl
     {
-        public Order()
+        public Order2()
         {
             InitializeComponent();
         }
@@ -31,7 +31,7 @@ namespace HMS.MVVM.View.UserControls
             set { SetValue(TitleProperty, value); }
 
         }
-        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(Order));
+        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(Order2));
 
         public string Desc
         {
@@ -39,7 +39,7 @@ namespace HMS.MVVM.View.UserControls
             set { SetValue(DescProperty, value); }
 
         }
-        public static readonly DependencyProperty DescProperty = DependencyProperty.Register("Desc", typeof(string), typeof(Order));
+        public static readonly DependencyProperty DescProperty = DependencyProperty.Register("Desc", typeof(string), typeof(Order2));
 
         public FontAwesome.Sharp.IconChar Icon
         {
@@ -47,7 +47,7 @@ namespace HMS.MVVM.View.UserControls
             set { SetValue(IconProperty, value); }
 
         }
-        public static readonly DependencyProperty IconProperty = DependencyProperty.Register("Icon", typeof(FontAwesome.Sharp.IconChar), typeof(Order));
+        public static readonly DependencyProperty IconProperty = DependencyProperty.Register("Icon", typeof(FontAwesome.Sharp.IconChar), typeof(Order2));
 
 
     }

@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HMS.MVVM.Model;
+using HMS.MVVM.Model.InsidePrescription;
+using HMS.MVVM.Model.InsidePrescription.insideTest;
 using HMS.MVVM.View.Appointments;
 using HMS.MVVM.View.Patients;
 using HMS.MVVM.View.Prescriptions;
@@ -227,7 +229,43 @@ namespace HMS.MVVM.ViewModel
 			}
 		}
 
+		// Calculate each patient's appointment fee which doctor is charging 
+		public static double calculateDoctorFeeBasedOnAppointments(List<Appointment> _appointments,List<Doctor> _doctors)
+		{
+			double docFee = 0;
+			foreach(var app in _appointments)
+			{
+				docFee += _doctors.Single(x => x.Id == app.DoctorId).Fee;
+			}
+			return docFee;
+		}
 
+		// Calculate each patient's Medical Test Fee which charging happens based on prescribed medical doctor 
+		public static double calculateTestFeeBasedOnPrescription(List<Prescription> _prescriptions, List<MedicalTest> _medicalTests,List<Test> _tests)
+		{
+			double _testFee = 0;
+			foreach(var presc in _prescriptions)
+			{
+				foreach (var medTest in _medicalTests.Where(x => x.PrescriptionId == presc.Id))
+				{
+					_testFee += _tests.Single(x => x.Id == medTest.TestId).Fee;
+				}
+			}
+
+			return _testFee;
+		}
+
+		// Calculate each patient's Hospital Chrage which is 10% of total of Appointment Fee and Medical Test Fee
+		public static double calculateHospitalFee(double _docFee, double _testFee)
+		{
+			return (_docFee + _testFee) * 0.1;
+		}
+
+		// Calculate each patient's Total Fee which include Appointment fee & Medical Test fee & hospital charge
+		public static double calculateTotalFee(double _docFee, double _testFee)
+		{
+			return _docFee + _testFee + (_docFee + _testFee) * 0.1;
+		}
 
 		public PatientProfileVM()
 		{
@@ -276,38 +314,45 @@ namespace HMS.MVVM.ViewModel
 				blood = tmp.BloodGroup;
 
 
-				var apps = context.Appointments.Where(x => x.PatientId == tmp.Id).ToList();
-				if (apps != null) apps.ForEach(y => { appointments.Add(y); });
+				var apps = context.Appointments.Where(x => x.PatientId == tmp.Id).ToList();//
+				if (apps != null) apps.ForEach(y => { appointments.Add(y); });//
 				else MessageBox.Show("This patient have no Appointments");
 				var prescs = context.Prescriptions.Where(x => x.PatientId == tmp.Id).ToList();
 				if (prescs != null) prescs.ForEach(p => { prescriptions.Add(p); });
 				else MessageBox.Show("This patient have no Prescriptions");
 
+
+
 				//Billing
 				double _docFee = 0;
-				foreach (var app in apps)
-				{
-					_docFee += context.Doctors.Single(x => x.Id == app.DoctorId).Fee;
-				}
+				if (apps != null) _docFee = calculateDoctorFeeBasedOnAppointments(apps, context.Doctors.ToList());
+
+				//foreach (var app in apps)
+				//{
+				//	_docFee += context.Doctors.Single(x => x.Id == app.DoctorId).Fee;
+				//}
 				doctorFee = $"Doctor Fee             : LKR {_docFee}";
 
 				double _testFee = 0;
-				foreach (var presc in prescs)
-				{
-					//MessageBox.Show(presc.PrescribedDate.ToString());
-					foreach (var medTest in context.MedicalTests.Where(x => x.PrescriptionId == presc.Id))
-					{
-						//MessageBox.Show("medTest.Description");
-						_testFee += context.Tests.Single(x => x.Id == medTest.TestId).Fee;
-					}
+
+				//foreach (var presc in prescs)
+				//{
+				//	//MessageBox.Show(presc.PrescribedDate.ToString());
+				//	foreach (var medTest in context.MedicalTests.Where(x => x.PrescriptionId == presc.Id))
+				//	{
+				//		//MessageBox.Show("medTest.Description");
+				//		_testFee += context.Tests.Single(x => x.Id == medTest.TestId).Fee;
+				//	}
+				//}
+
+				if (prescs != null) _testFee = calculateTestFeeBasedOnPrescription(prescs, context.MedicalTests.ToList(), context.Tests.ToList());
 
 
-				}
 				testFee = $"Test Fee                  : LKR {_testFee}";
 
-				hospitalFee = $"Hospital Fee (10%) : LKR {(_docFee + _testFee) * 0.1}";
+				hospitalFee = $"Hospital Fee (10%) : LKR {calculateHospitalFee(_docFee,_testFee)}";
 
-				totalFee = $"Total Fee                 : LKR {_docFee + _testFee + (_docFee + _testFee) * 0.1}";
+				totalFee = $"Total Fee                 : LKR {calculateTotalFee(_docFee, _testFee)}";
 
 			}
 		}

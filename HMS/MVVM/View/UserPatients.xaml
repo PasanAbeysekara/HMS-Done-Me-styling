@@ -7,7 +7,8 @@
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:vm="clr-namespace:HMS.MVVM.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+                  xmlns:fa="http://schemas.fontawesome.io/icons/"
+             d:DesignHeight="450" d:DesignWidth="1000"
              x:Name="userPatients_window">
     <UserControl.DataContext>
         <vm:UserPatientsVM/>
@@ -15,8 +16,15 @@
 
     <StackPanel>
         <StackPanel Orientation="Horizontal">
-            <Button Content="Refresh" Width="100" Style="{StaticResource pagingButton}" Command="{Binding RefreshListCommand}"/>
-            <Button Style="{StaticResource pagingButton}" Margin="540 0" Click="AddMemberButton_Click">
+            <Button  Width="100" Style="{StaticResource pagingButton}" Command="{Binding RefreshListCommand}">
+                <Button.Content>
+                    <StackPanel>
+                        <TextBlock Text="Refresh"/>
+                        <fa:ImageAwesome Icon="Refresh" Width="15" Foreground="White"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Style="{StaticResource pagingButton}" Margin="740 0" Click="AddMemberButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <icon:PackIconMaterial Kind="Plus" Style="{StaticResource menuButtonIcon}" Margin="10 5"/>
                     <TextBlock Text="Add New Patient" VerticalAlignment="Center"/>
@@ -27,28 +35,28 @@
                               RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" ItemsSource="{Binding PatientData}" AutoGenerateColumns="False" MaxHeight="350">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Binding="{Binding Id}" Header="# ID"/>
-                <DataGridTextColumn Binding="{Binding FullName}" Header="Full Name"/>
-                <DataGridTextColumn Binding="{Binding Email}" Header="Email"/>
-                <DataGridTextColumn Binding="{Binding BirthDay}" Header="Date of Birth"/>
-                <DataGridTextColumn Binding="{Binding Phone}" Header="Phone"/>
-                <DataGridTextColumn Binding="{Binding Gender}" Header="Gender"/>
-                <DataGridTextColumn Binding="{Binding BloodGroup}" Header="Blood Group"/>
-                <DataGridTextColumn Binding="{Binding Address}" Header="Address"/>
-                <DataGridTextColumn Binding="{Binding Weight}" Header="Weight"/>
-                <DataGridTextColumn Binding="{Binding Height}" Header="Height"/>
+                <DataGridTextColumn Binding="{Binding Id}" Width="40" Header="# ID"/>
+                <DataGridTextColumn Binding="{Binding FullName}" Width="150" Header="Full Name"/>
+                <DataGridTextColumn Binding="{Binding Email}" Width="90" Header="Email"/>
+                <DataGridTextColumn Binding="{Binding BirthDay}" Width="100" Header="Date of Birth"/>
+                <DataGridTextColumn Binding="{Binding Phone}" Width="110" Header="Phone"/>
+                <DataGridTextColumn Binding="{Binding Gender}" Width="55" Header="Gender"/>
+                <DataGridTextColumn Binding="{Binding BloodGroup}" Width="70" Header="Blood Gp"/>
+                <DataGridTextColumn Binding="{Binding Address}" Width="140" Header="Address"/>
+                <DataGridTextColumn Binding="{Binding Weight}" Width="50" Header="Weight"/>
+                <DataGridTextColumn Binding="{Binding Height}" Width="55" Header="Height"/>
 
                 <DataGridTemplateColumn Header="Action" Width="140">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Command="{Binding DataContext.ProfilePatientCommand,ElementName=userPatients_window}" CommandParameter="{Binding}" Style="{StaticResource actionButton}">
+                                <Button Command="{Binding DataContext.ProfilePatientCommand,ElementName=userPatients_window}" CommandParameter="{Binding}" Style="{StaticResource actionButton}" Background="#A4de02">
                                     <icon:PackIconMaterial Kind="Account" Style="{StaticResource actionButtonIcon}"/>
                                 </Button>
-                                <Button Command="{Binding DataContext.EditPatientCommand,ElementName=userPatients_window}" CommandParameter="{Binding}" Style="{StaticResource actionButton}">
+                                <Button Command="{Binding DataContext.EditPatientCommand,ElementName=userPatients_window}" CommandParameter="{Binding}" Style="{StaticResource actionButton}" Background="#3a9bdc">
                                     <icon:PackIconMaterial Kind="AccountEdit" Style="{StaticResource actionButtonIcon}"/>
                                 </Button>
-                                <Button Command="{Binding DataContext.DeletePatientCommand,ElementName=userPatients_window}" CommandParameter="{Binding}" Style="{StaticResource actionButton}">
+                                <Button Command="{Binding DataContext.DeletePatientCommand,ElementName=userPatients_window}" CommandParameter="{Binding}" Style="{StaticResource actionButton}" Background="#df2c14">
                                     <icon:PackIconMaterial Kind="Delete" Style="{StaticResource actionButtonIcon}"/>
                                 </Button>
                             </StackPanel>
